@@ -17,8 +17,9 @@ const drawerWidth = 250;
 
 const styles = theme => ({
     appBar: {
+        backgroundColor: '#fafafa',
         position: 'absolute',
-        zIndex: theme.zIndex.navDrawer + 1,
+        zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
@@ -33,7 +34,12 @@ const styles = theme => ({
         }),
     },
     menuButton: {
-        marginLeft: -15
+        marginLeft: '-15px'
+    },
+    logo: {
+        width: '200px',
+        height: '39px',
+        marginLeft: '5px'
     },
     flex: {
         flex: 1
@@ -51,17 +57,19 @@ class Header extends Component {
         const {classes, navDrawerOpen, handleToggleDrawer} = this.props;
 
         return (
-            <div>
+            <div> 
                 <AppBar className={classNames(classes.appBar, navDrawerOpen && classes.appBarShift)}>
                     <Toolbar>
-                        <IconButton color="contrast" aria-label="Menu" onClick={handleToggleDrawer}
+                        <IconButton color="default" aria-label="Menu" onClick={handleToggleDrawer}
                                     className={classes.menuButton}>
                             <MenuIcon />
                         </IconButton>
+                        <img src="img/logo.png" className={classes.logo}/>
                         <Typography type="title" color="inherit" className={classes.flex}>
 
                         </Typography>
-                        <Button color="contrast" onClick={this.logOut.bind(this)}>Logout</Button>
+                        
+                        <Button color="default" onClick={this.logOut.bind(this)}>Logout</Button>
                     </Toolbar>
                 </AppBar>
             </div>

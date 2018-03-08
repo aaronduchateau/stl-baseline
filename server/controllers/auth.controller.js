@@ -23,10 +23,13 @@ export function login(req, res) {
                     id: user.get('id'),
                     email: user.get('email')
                 }, process.env.TOKEN_SECRET_KEY);
-
+                console.log("!=====");
+                console.log(user.get('first_name'));
                 res.json({
                     token,
-                    email:  user.get('email')
+                    email:  user.get('email'),
+                    firstName: user.get('first_name'),
+                    lastName: user.get('last_name')
                 });
             } else {
                 logger.log('error', 'Authentication failed. Invalid password.');

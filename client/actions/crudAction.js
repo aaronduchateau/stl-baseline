@@ -1,5 +1,4 @@
-import createHistory from 'history/createBrowserHistory';
-const history = createHistory();
+import history from '../utils/history';
 
 /**
  * Import all apiAction as an object.
