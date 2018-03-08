@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import {blueGrey} from 'material-ui/colors';
+import {blue, grey} from 'material-ui/colors';
 import {AppContainer} from 'react-hot-loader';
 
 // Import custom components
@@ -13,7 +13,9 @@ import {verifyToken} from './actions/tokenAction';
 const mountNode = document.getElementById('root');
 const theme = createMuiTheme({
     palette: {
-        primary: blueGrey
+        primary: blue,
+        secondary: grey
+
     }
 });
 

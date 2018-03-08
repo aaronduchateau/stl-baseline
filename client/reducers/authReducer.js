@@ -15,6 +15,7 @@ export default function (state, action) {
 
     switch (action.type) {
         case LOG_IN_SUCCESS:
+            console.log(action);
             return Object.assign({}, state, {
                 isAuthenticated: true,
                 isLoading: false,

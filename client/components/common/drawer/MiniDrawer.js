@@ -18,7 +18,7 @@ const styles = theme => ({
     drawerPaper: {
         position: 'relative',
         height: 'auto',
-        width: drawerWidth,
+        maxWidth: drawerWidth,
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
@@ -59,42 +59,43 @@ const MiniDrawer = (props) => {
                 paper: classNames(classes.drawerPaper, !navDrawerOpen && classes.drawerPaperClose),
             }}
             open={navDrawerOpen}
+            onClose={()=>{props.onToggleDrawer();}}
         >
             <div className={classes.drawerHeader}/>
             <Divider />
             <List>
-                <ListItem button>
+                <ListItem button onClick={() => {props.onClickNavigate("/dashboard");}}>
                     <ListItemIcon>
                         <HomeIcon />
                     </ListItemIcon>
                     <ListItemText primary="Dashboard"/>
                 </ListItem>
-                <ListItem button>
+                <ListItem button onClick={() => {props.onClickNavigate("/users");}}>
                     <ListItemIcon>
                         <PersonIcon />
                     </ListItemIcon>
                     <ListItemText primary="Users"/>
                 </ListItem>
-                <ListItem button>
+                <ListItem button onClick={() => {props.onClickNavigate("/products");}}>
                     <ListItemIcon>
                         <LocalTaxiIcon />
                     </ListItemIcon>
                     <ListItemText primary="Products"/>
                 </ListItem>
-                <ListItem button>
+                <ListItem button onClick={() => {props.onClickNavigate("/notifications");}}>
                     <ListItemIcon>
                         <NotificationsIcon />
                     </ListItemIcon>
                     <ListItemText primary="Notifications"/>
                 </ListItem>
-                <ListItem button>
+                <ListItem button onClick={() => {props.onClickNavigate("/settings");}}>
                     <ListItemIcon>
                         <SettingsIcon />
                     </ListItemIcon>
                     <ListItemText primary="Settings"/>
                 </ListItem>
                 <Divider/>
-                <ListItem button>
+                <ListItem button onClick={() => {props.onClickNavigate("/help");}}>
                     <ListItemIcon>
                         <HelpIcon />
                     </ListItemIcon>
@@ -107,7 +108,9 @@ const MiniDrawer = (props) => {
 
 MiniDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
-    navDrawerOpen: PropTypes.bool
+    navDrawerOpen: PropTypes.bool,
+    onToggleDrawer: PropTypes.func.isRequired,
+    onClickNavigate: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(MiniDrawer)
