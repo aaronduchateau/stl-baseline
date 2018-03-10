@@ -15,16 +15,10 @@ export function getMe() {
         dispatch(UserAction.getMeRequest());
 
         fetch(API_URL + 'me', '').then((response) => {
-
             dispatch(UserAction.getMeSuccess(response.data));
-
-            //setToken(response.data.token);
-
-            //window.location.href = BASE_URL + 'dashboard';
         })
             .catch((error) => {
                 console.log(error);
-                //dispatch(AuthAction.loginFailure(error));
             });
     };
 }

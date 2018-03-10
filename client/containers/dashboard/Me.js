@@ -14,24 +14,20 @@ class Me extends Component {
     }
 
     componentWillMount(){
-    	console.log("FIRED OFF THIS SHIT");
-    	console.log('xxx');
-    	console.log(this.props.user);
     	const user = this.props.user;
     	if(user.firstName === null){
     		this.props.actions.getMe();
     	}
     }
 
-
     render() {
         return (
             <div>
-	        	{this.props.user.firstName === null ?
-	        		<FullScreenLoader /> :
-	        		<div>{this.props.children}</div>
-	        	}
-        	</div>
+                {this.props.user.firstName === null ?
+                    <FullScreenLoader /> :
+                    <div>{this.props.children}</div>
+                }
+            </div>
         )
     }
 
