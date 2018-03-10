@@ -85,6 +85,8 @@ const router = express.Router();
  *
  */
 
+
+
 router.route('/')
 
 /**
@@ -250,6 +252,9 @@ router.route('/:id')
     .delete(isAuthenticated, (req, res) => {
         userCtrl.destroy(req, res);
     });
+
+
+        
 
 
 export default router;

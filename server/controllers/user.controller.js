@@ -53,6 +53,35 @@ export function findById(req, res) {
 }
 
 /**
+ *  Find user by auth
+ *
+ * @param {object} req
+ * @param {object} res
+ * @returns {*}
+ */
+export function findByAuth(req, res) {
+    User.forge({id: req.currentUser.id})
+        .fetch()
+        .then(user => {
+            if (!user) {
+                res.status(HttpStatus.NOT_FOUND).json({
+                    error: true, data: {}
+                });
+            }
+            else {
+                res.json({
+                    error: false,
+                    data: user.toJSON()
+                });
+            }
+        })
+        .catch(err => res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                error: err
+            })
+        );
+}
+
+/**
  * Store new user
  *
  * @param {object} req

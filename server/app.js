@@ -23,13 +23,16 @@ app.get('/swagger.json', (req, res) => {
    res.json(swagger);
 });
 
+// Router
+// keep this above the wildcard below or api won't work
+app.use('/api', routes);
+
 // Landing page
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// Router
-app.use('/api', routes);
+
 
 // Joi Error Handler
 app.use(joiErrorHandler);

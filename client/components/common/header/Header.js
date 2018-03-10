@@ -54,7 +54,7 @@ class Header extends Component {
     }
 
     render() {
-        const {classes, navDrawerOpen, handleToggleDrawer} = this.props;
+        const {classes, navDrawerOpen, handleToggleDrawer, user} = this.props;
 
         return (
             <div> 
@@ -69,7 +69,7 @@ class Header extends Component {
 
                         </Typography>
                         
-                        <Button color="default" onClick={this.logOut.bind(this)}>Logout</Button>
+                        <Button color="default" onClick={this.logOut.bind(this)}>Logout {user.firstName}</Button>
                     </Toolbar>
                 </AppBar>
             </div>
@@ -82,10 +82,17 @@ Header.propTypes = {
 };
 
 /**
+ * Map the state to props.
+ */
+const mapStateToProps = state => ({
+    user: state.user
+});
+
+/**
  * Map the actions to props.
  */
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Object.assign({}, authService), dispatch)
 });
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(Header))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header))
