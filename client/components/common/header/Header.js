@@ -17,7 +17,7 @@ const drawerWidth = 250;
 
 const styles = theme => ({
     appBar: {
-        backgroundColor: '#fafafa',
+        backgroundColor: '#36393f',
         position: 'absolute',
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
@@ -69,7 +69,7 @@ class Header extends Component {
 
                         </Typography>
                         
-                        <Button color="default" onClick={this.logOut.bind(this)}>Logout {user.firstName}</Button>
+                        <Button color="primary" onClick={this.logOut.bind(this)}>Logout {user.firstName}</Button>
                     </Toolbar>
                 </AppBar>
             </div>
